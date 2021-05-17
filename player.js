@@ -2,7 +2,8 @@ class Player {
   constructor(){
     //default x position
     this.r = 100;
-    this.x = w/2;
+    // this.x = w;
+    this.x = windowWidth-this.r;
     //default y position
     this.y = height*0.5;
     this.speed = 2;
@@ -43,7 +44,8 @@ class Player {
 
       case 'right':
       //increase x position
-      if (this.x < w-this.r){ //max x pos
+      // if (this.x < w-this.r){ //max x pos
+      if (this.x < windowWidth-this.r){ //max x pos
         this.x+=this.speed;
       }
       break;

@@ -7,6 +7,8 @@ let points = 0;
 let w = 600;
 let h = 600;
 
+// createCanvas(windowWidth, windowHeight * 0.85);
+
 let trash = [];
 let flowers = [];
 let player;
@@ -42,7 +44,8 @@ function setup() {
   var url = 'https://api.giphy.com/v1/gifs/search?&api_key=nqDlsVpOUw2qbCA0kd9jn43RdX07aU7Q&q=environment';
   loadJSON(url, gotData);
 
-  cnv = createCanvas(w, h);
+  // cnv = createCanvas(w, h);
+  cnv = createCanvas(windowWidth, windowHeight * 0.85);
   textFont('monospace');
 
   //frames for player sprite
@@ -54,8 +57,8 @@ function setup() {
     playerAnimation.push(img);
   }
 
-  player = new Player();
-  player.display();
+  //player = new Player();
+  // player.display();
 
   //frames for trash sprite
   let trashFrames = trashJSON.frames;
@@ -203,11 +206,11 @@ function drawCreek() {
   rectMode(CENTER);
   rect(width * 0.5, height * 0.9, width, height * 0.2);
 
-  drawTrees(300, 175);
-  drawTrees(500, 175);
-  drawTrees(100, 300);
-  drawTrees(300, 300);
-  drawTrees(500, 300);
+  drawTrees(width*0.5, height*0.3);
+  drawTrees(width*0.85, height*0.3);
+  drawTrees(height*0.16, height*0.5);
+  drawTrees(width*0.5, height*0.5);
+  drawTrees(width*0.85, height*0.5);
 
   push();
   //transparent cyan waves for water
