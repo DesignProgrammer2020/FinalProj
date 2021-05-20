@@ -13,7 +13,7 @@ class Tree {
   constructor () {
     this.x = random(width);
     this.y = random(height * 0.5, height * 0.75);
-    this.s = Math.round(random(5, 10));
+    this.s = Math.round(random(10, 20));
     this.angle = random(20, 40);
     // this.color = [random(255), random(200, 255), random(128)];
     this.color = [0, 120, 0];

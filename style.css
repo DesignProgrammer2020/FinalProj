@@ -6,7 +6,7 @@ body {
 
 canvas {
   display: block;
-  border: 5px solid lightgreen;
+  border: none;
 }
 
 .randomizerButton {
