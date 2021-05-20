@@ -32,7 +32,7 @@ function drawPreload() {
 }
 
 function drawSetup() {
-  createCanvas(windowWidth, windowHeight * 0.85);
+  // createCanvas(windowWidth, windowHeight * 0.85);
   pixelDensity(1);
   drawPixels();
   strokeWeight(3);
@@ -59,12 +59,13 @@ function drawSetup() {
     turtles[i] = new Turtles (random(0, windowWidth),random(0, windowHeight));
   }
 
-  // cnv.mouseClicked(drawMouseClicked);
+  cnv.mouseClicked(drawMouseClicked);
 
 }
 
 function drawDraw() {
   if (firstTime) {
+    clear();
     drawPixels();
 
     for (i = 0; i < butterflies.length; i++) {
@@ -253,6 +254,5 @@ function drawPixels() {
   updatePixels();
 }
 
-// drawMouseClicked () {
-//
-// }
+function drawMouseClicked () {
+}

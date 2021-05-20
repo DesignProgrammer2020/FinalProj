@@ -38,7 +38,7 @@ function preload() {
   playerJSON = loadJSON('assets/collector.json');
   trashSS = loadImage('assets/bottle.png');
   trashJSON = loadJSON('assets/bottle.json');
-  // drawPreload();
+  drawPreload();
 }
 
 function setup() {
@@ -57,9 +57,6 @@ function setup() {
     let img = playerSS.get(pos.x, pos.y, pos.w, pos.h);
     playerAnimation.push(img);
   }
-
-  //player = new Player();
-  // player.display();
 
   //frames for trash sprite
   let trashFrames = trashJSON.frames;
@@ -150,6 +147,8 @@ function title() {
 
 function titleMouseClicked() {
   state = 'level 1';
+  // state = 'draw';
+  // drawSetup();
 }
 
 function level1() {
@@ -192,12 +191,14 @@ function level1() {
   if (points >= 1) {
     state = 'you win';
   }
+  pop();
 }
 
 function drawCreek() {
   //yellow-green background for grass
   background(100, 240, 0);
 
+  noStroke();
   //brown rectangle and curves for creek bank
   fill(206, 154, 113);
 
@@ -264,7 +265,7 @@ function youWin() {
   text('You win!', width / 2, height * 0.3);
   textSize(24);
   textAlign(CENTER);
-  text('Thank you for picking up litter.', width / 2, height * 0.4);
+  text('Thank you for picking up litter.', width / 2, height * 0.4);  
 }
 
 function youWinMouseClicked() {
