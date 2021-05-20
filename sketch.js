@@ -38,6 +38,7 @@ function preload() {
   playerJSON = loadJSON('assets/collector.json');
   trashSS = loadImage('assets/bottle.png');
   trashJSON = loadJSON('assets/bottle.json');
+  // drawPreload();
 }
 
 function setup() {
@@ -101,6 +102,10 @@ function draw() {
     case 'you win':
       youWin();
       cnv.mouseClicked(youWinMouseClicked);
+      break;
+
+    case 'draw':
+      drawDraw();
       break;
 
     default:
@@ -184,7 +189,7 @@ function level1() {
   textAlign(CENTER);
   text(`points:${points}`, width*0.15, height * 0.15);
 
-  if (points >= 10) {
+  if (points >= 1) {
     state = 'you win';
   }
 }
@@ -265,8 +270,9 @@ function youWin() {
 function youWinMouseClicked() {
   //don't let youWin drawing go beneath beginning image
   clear();
-  state = 'title';
+  state = 'draw';
   points = 0;
+  drawSetup();
 }
 
 function drawTrees(x, y) {
