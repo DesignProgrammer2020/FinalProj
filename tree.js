@@ -11,9 +11,9 @@ var trees = [];
 
 class Tree {
   constructor () {
-    this.x = random(width);
-    this.y = random(height * 0.5, height * 0.75);
-    this.s = Math.round(random(10, 20));
+    this.x = random(width*0.2, width*0.8);
+    this.y = random(height * 0.5, height * 0.8);
+    this.s = Math.round(random(10, 15));
     this.angle = random(20, 40);
     // this.color = [random(255), random(200, 255), random(128)];
     this.color = [0, 120, 0];

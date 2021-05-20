@@ -188,7 +188,7 @@ function level1() {
   textAlign(CENTER);
   text(`points:${points}`, width*0.15, height * 0.15);
 
-  if (points >= 1) {
+  if (points >= 10) {
     state = 'you win';
   }
   pop();
@@ -252,6 +252,7 @@ function drawCreek() {
 function level1MouseClicked() {}
 
 function youWin() {
+  push();
   background(230, 210, 80);
 
   noStroke();
@@ -267,6 +268,7 @@ function youWin() {
   textAlign(CENTER);
   text('Thank you for picking up litter.', width / 2, height * 0.4);
   text('Now click for drawing fun.', width / 2, height * 0.5);
+  pop();
 }
 
 function youWinMouseClicked() {
