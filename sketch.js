@@ -261,11 +261,11 @@ function youWin() {
   fill(150);
   square(random(0, width), random(0, height), random(25, 75));
 
+  textAlign(CENTER);
   textSize(36);
   fill(150, 120, 40);
   text('You win!', width / 2, height * 0.3);
   textSize(24);
-  textAlign(CENTER);
   text('Thank you for picking up litter.', width / 2, height * 0.4);
   text('Now click for drawing fun.', width / 2, height * 0.5);
   pop();
