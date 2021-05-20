@@ -12,11 +12,13 @@ var trees = [];
 class Tree {
   constructor () {
     this.x = random(width);
-    this.y = random(height * 0.85, height * 0.95);
-    this.s = Math.round(random(3,5));
+    this.y = random(height * 0.5, height * 0.75);
+    this.s = Math.round(random(5, 10));
     this.angle = random(20, 40);
-    this.color = [random(255), random(200, 255), random(128)];
-    this.age = Math.round(random(2, sentences.length)-1);
+    // this.color = [random(255), random(200, 255), random(128)];
+    this.color = [0, 120, 0];
+    // this.age = Math.round(random(2, sentences.length)-1);
+    this.age = sentences.length-1;
   }
 
   display() {
@@ -27,6 +29,7 @@ class Tree {
       angleMode(DEGREES);
       translate(this.x, this.y);
       stroke(this.color);
+      strokeWeight(3);
 
       for (let i=0; i<sentence.length; i++){
         var current = sentence.charAt(i);

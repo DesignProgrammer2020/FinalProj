@@ -265,7 +265,8 @@ function youWin() {
   text('You win!', width / 2, height * 0.3);
   textSize(24);
   textAlign(CENTER);
-  text('Thank you for picking up litter.', width / 2, height * 0.4);  
+  text('Thank you for picking up litter.', width / 2, height * 0.4);
+  text('Now click for drawing fun.', width / 2, height * 0.5);
 }
 
 function youWinMouseClicked() {
