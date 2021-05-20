@@ -70,7 +70,7 @@ function setup() {
   }
 
   player = new Player();
-  player.display();
+  // player.display();
 
   trash.push(new Trash());
 
@@ -78,6 +78,7 @@ function setup() {
     flowers.push(new Flower());
   }
 
+  tree_setup();
 }
 
 function gotData(giphy) {
@@ -205,7 +206,7 @@ function drawCreek() {
 
   rectMode(CENTER);
   rect(width * 0.5, height * 0.9, width, height * 0.2);
-
+  tree_display();
   drawTrees(width*0.5, height*0.3);
   drawTrees(width*0.85, height*0.3);
   drawTrees(height*0.16, height*0.5);
