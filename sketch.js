@@ -152,7 +152,6 @@ function titleMouseClicked() {
 }
 
 function level1() {
-  // background(200, 200, 0);
   drawCreek();
 
   for (let i=0; i<flowers.length; i++){
@@ -182,7 +181,7 @@ function level1() {
   }
 
   push();
-  textSize(24);
+  textSize(39);
   fill(0);
   noStroke();
   textAlign(CENTER);
@@ -213,11 +212,6 @@ function drawCreek() {
   rectMode(CENTER);
   rect(width * 0.5, height * 0.9, width, height * 0.2);
   tree_display();
-  drawTrees(width*0.5, height*0.3);
-  drawTrees(width*0.85, height*0.3);
-  drawTrees(height*0.16, height*0.5);
-  drawTrees(width*0.5, height*0.5);
-  drawTrees(width*0.85, height*0.5);
 
   push();
   //transparent cyan waves for water
@@ -252,20 +246,25 @@ function drawCreek() {
 function level1MouseClicked() {}
 
 function youWin() {
+  frameRate(2);
   push();
-  background(230, 210, 80);
+  background(150, 230, 70);
 
   noStroke();
-  fill(180, 150, 60);
+  fill(random(200), random(200), random(200));
   square(random(0, width), random(0, height), random(25, 75));
-  fill(150);
+  fill(random(200), random(200), random(200));
+  square(random(0, width), random(0, height), random(25, 75));
+  fill(random(200), random(200), random(200));
   square(random(0, width), random(0, height), random(25, 75));
 
   textAlign(CENTER);
-  textSize(36);
-  fill(150, 120, 40);
+  textSize(39);
+  fill(0, 150, 0);
+  textStyle(BOLD);
   text('You win!', width / 2, height * 0.3);
   textSize(24);
+  textStyle(NORMAL);
   text('Thank you for picking up litter.', width / 2, height * 0.4);
   text('Now click for drawing fun.', width / 2, height * 0.5);
   pop();
@@ -277,28 +276,4 @@ function youWinMouseClicked() {
   state = 'draw';
   points = 0;
   drawSetup();
-}
-
-function drawTrees(x, y) {
-  //add trees to the background
-  //let trees remain in same position for every game
-
-  push();
-  //scale of trees
-  if (y < height * 0.5) {
-    scale(0.75);
-  } else {
-    scale(1);
-  }
-
-  //brown triangle for trunk
-  noStroke();
-  fill(150, 100, 50);
-  triangle(x, y - 60, x - 15, y + 60, x + 15, y + 60);
-  //green circle for canopy
-  fill(0, 120, 0);
-  circle(x-50, y-40, 70);
-  circle(x+50, y-40, 70);
-  circle(x, y - 60, 100);
-  pop();
 }
