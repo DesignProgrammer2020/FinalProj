@@ -77,6 +77,8 @@ function setup() {
   }
 
   tree_setup();
+
+  drawPixels();
 }
 
 function gotData(giphy) {
@@ -87,6 +89,7 @@ function gotData(giphy) {
 function draw() {
   switch (state) {
     case 'title':
+    drawPixels();
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
@@ -125,6 +128,8 @@ function keyPressed() {
 }
 
 function title() {
+  drawPixels();
+
   push();
   //Earth Day everyday gif
   if (earthDayImage != null) {
@@ -133,22 +138,37 @@ function title() {
   }
 
   //bold gold text to contrast with light blue image
-  fill(200, 175, 0);
+  // fill(200, 175, 0);
+  fill(255);
   textStyle(BOLD);
 
   textSize(36);
   textAlign(CENTER);
-  text('Collect the Trash', width / 2, height * 0.18);
-
+  text('Collect the Trash', width*0.5, height * 0.1);
+  text('Help repopulate animals', width*0.5, height * 0.95);
   textSize(24);
-  text('to help keep the creek clean', width / 2, height * 0.85);
+  fill(255, 0, 0);
+  text('Click the screen to start', width*0.5, height*0.85);
   pop();
+}
+
+function drawPixels() {
+  //draw background with pixels
+  loadPixels();
+  for (let j = 0; j < height; j++) {
+    for (let i = 0; i < width; i++) {
+      let index = (i + j * width) * 4;
+      pixels[index + 0] = i / 4;
+      pixels[index + 1] = j / 2;
+      pixels[index + 2] = i / 2;
+      pixels[index + 3] = 255;
+    }
+  }
+  updatePixels();
 }
 
 function titleMouseClicked() {
   state = 'level 1';
-  // state = 'draw';
-  // drawSetup();
 }
 
 function level1() {
