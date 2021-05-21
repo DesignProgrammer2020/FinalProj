@@ -31,8 +31,12 @@ let earthDayImage = null;
 
 let yoff = 0.0; // 2nd dimension of perlin noise
 
+var song;
 
 function preload() {
+  //animal crossing song
+  song = loadSound("animalcrossing.mp3");
+
   //spritesheets
   playerSS = loadImage('assets/collector.png');
   playerJSON = loadJSON('assets/collector.json');
@@ -48,6 +52,10 @@ function setup() {
   // cnv = createCanvas(w, h);
   cnv = createCanvas(windowWidth, windowHeight * 0.85);
   textFont('monospace');
+
+  //play animal crossing song
+  song.play();
+  song.setVolume(1);
 
   //frames for player sprite
   let playerFrames = playerJSON.frames;
