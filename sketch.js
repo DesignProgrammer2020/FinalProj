@@ -34,15 +34,15 @@ let yoff = 0.0; // 2nd dimension of perlin noise
 var song;
 
 function preload() {
-  //animal crossing song
-  song = loadSound("animalcrossing.mp3");
-
   //spritesheets
   playerSS = loadImage('assets/collector.png');
   playerJSON = loadJSON('assets/collector.json');
   trashSS = loadImage('assets/bottle.png');
   trashJSON = loadJSON('assets/bottle.json');
   drawPreload();
+
+  //animal crossing song
+  song = loadSound('animalcrossing.mp3');
 }
 
 function setup() {
@@ -53,7 +53,7 @@ function setup() {
   cnv = createCanvas(windowWidth, windowHeight * 0.85);
   textFont('monospace');
 
-  //play animal crossing song
+  //play animal crossing song for entire game
   song.play();
   song.setVolume(1);
 
