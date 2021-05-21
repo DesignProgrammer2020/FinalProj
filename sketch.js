@@ -158,11 +158,9 @@ function title() {
     image(earthDayImage, width / 2, height / 2);
   }
 
-  //bold gold text to contrast with light blue image
-  // fill(200, 175, 0);
   fill(255);
+  textFont('Courier New');
   textStyle(BOLD);
-
   textSize(36);
   textAlign(CENTER);
   text('Collect the Trash', width*0.5, height * 0.1);
@@ -229,7 +227,7 @@ function level1() {
   textAlign(CENTER);
   text(`points:${points}`, width*0.15, height * 0.15);
 
-  if (points >= 1) {
+  if (points >= 5) {
     state = 'you win';
   }
   pop();
@@ -313,9 +311,13 @@ function youWin() {
 }
 
 function youWinMouseClicked() {
-  //don't let youWin drawing go beneath beginning image
   clear();
   state = 'draw';
-  points = 0;
   drawSetup();
+}
+
+function restartGame() {
+  clear();
+  state = 'title';
+  points = 0;
 }

@@ -33,8 +33,8 @@ function drawPreload() {
   }
 
   //create 6 turtles at random locations
-  for (let i=0; i<=5; i++){
-    turtles[i] = new Turtles (random(0, windowWidth),random(0, windowHeight));
+  for (let i = 0; i <= 5; i++) {
+    turtles[i] = new Turtles(random(0, windowWidth), random(0, windowHeight));
   }
 
   //upload newYork font
@@ -54,7 +54,7 @@ function drawSetup() {
   textSize(40);
 
   //click the button
-  button = createButton("Click to see");
+  button = createButton("Click to randomize");
   //button = select("#randButton");
   button.mousePressed(buttonPressed);
   button.class("randomizerButton");
@@ -70,10 +70,10 @@ function drawDraw() {
 
   if (animating == true && endangered.length > 0) {
     clear();
-    drawPixels();  //multicolored background
+    drawPixels(); //multicolored background
 
     //upload images of endangered species
-    imageCounter +=1
+    imageCounter += 1
     imageCounter %= endangered.length;
     image(endangered[imageCounter], width / 2, height / 2);
   }
@@ -91,27 +91,12 @@ function drawDraw() {
     drawAnimal();
   }
 
-  if (final) {    //last frame
-    drawPixels();
-
-    for (i = 0; i < turtles.length; i++) {
-      turtles[i].display();
-      turtles[i].move();
-    }
-
-    fill(0, 0, 150);
-    noStroke();
-    textArray = newYork.textToPoints('Protect endangered animals!', width * 0.15, height * 0.4, 78, {
-      sampleFactor: 0.3
-    });
-
-    for (let i = 0; i < textArray.length; i++) {
-      ellipse(textArray[i].x, textArray[i].y, 2, 2);
-    }
+  if (final) { //last frame
+    drawFinal();
   }
 }
 
-function drawWelcomePage(){
+function drawWelcomePage() {
   clear();
   drawPixels();
 
@@ -137,7 +122,7 @@ function drawWelcomePage(){
   text("Drag to trace. Hit 's' to save. Hit 'c' to redraw.", 0.15 * width, 0.6 * height);
 }
 
-function randomizer() {   //randomize preloaded images
+function randomizer() { //randomize preloaded images
   animating = false;
   if (endangered[0]) {
     clear();
@@ -163,7 +148,7 @@ function buttonPressed() {
 function keyTyped() {
   if (key === 's') { //save image
     saveCanvas('drawing', 'png');
-  } else if (key==='c'){
+  } else if (key === 'c') {
     clear();
     array = [];
     drawPixels();
@@ -258,5 +243,37 @@ function drawPixels() {
   updatePixels();
 }
 
-function drawMouseClicked () {
+function drawMouseClicked() {
+  if (final) {
+    restartGame();
+  }
+}
+
+function drawFinal() {
+  drawPixels();
+
+  for (i = 0; i < turtles.length; i++) {
+    turtles[i].display();
+    turtles[i].move();
+  }
+
+  fill(0, 0, 150);
+  noStroke();
+  textArray = newYork.textToPoints('Protect endangered animals!', width * 0.15, height * 0.4, 78, {
+    sampleFactor: 0.3
+  });
+
+  for (let i = 0; i < textArray.length; i++) {
+    ellipse(textArray[i].x, textArray[i].y, 2, 2);
+  }
+
+  textSize(36);
+  text('Done', width * 0.15, height * 0.5);
+  text('Click to replay', width * 0.15, height * 0.6);
+}
+
+function finalMouseClicked() {
+  clear();
+  state = 'title';
+  points = 0;
 }

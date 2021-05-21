@@ -27,7 +27,7 @@ class Tree {
       angleMode(DEGREES);
       translate(this.x, this.y);
       stroke(this.color);
-      strokeWeight(3);
+      strokeWeight(5);
 
       for (let i=0; i<sentence.length; i++){
         var current = sentence.charAt(i);
@@ -76,20 +76,17 @@ function tree_setup() {
     sentences.push(nextSentence);
   }
 
-  // for (let i=0; i<5; i++) {
-  //   trees.push(new Tree());
-  // }
   w = windowWidth;
   h = windowHeight;
 
   //trees in the back
-  trees.push(new Tree(w*0.4, h*0.3, 8));
-  trees.push(new Tree(w*0.6, h*0.3, 8));
+  trees.push(new Tree(w*0.35, h*0.3, 10));
+  trees.push(new Tree(w*0.65, h*0.3, 10));
 
   //trees in the front
-  trees.push(new Tree(w*0.2, h*0.55, 12));
+  trees.push(new Tree(w*0.2, h*0.55, 13));
   trees.push(new Tree(w*0.5, h*0.6, 15));
-  trees.push(new Tree(w*0.8, h*0.55, 12));
+  trees.push(new Tree(w*0.8, h*0.55, 13));
 }
 
 function tree_display() {
