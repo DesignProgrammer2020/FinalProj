@@ -45,17 +45,30 @@ function preload() {
   song = loadSound('animalcrossing.mp3');
 }
 
+function playSong() {
+  if (song.isPlaying()){
+    //play animal crossing song for entire game
+    song.stop();
+    song.setVolume(1);
+  }
+  else {
+    song.play();
+  }
+}
+
 function setup() {
   var url = 'https://api.giphy.com/v1/gifs/search?&api_key=nqDlsVpOUw2qbCA0kd9jn43RdX07aU7Q&q=environment';
   loadJSON(url, gotData);
 
-  // cnv = createCanvas(w, h);
-  cnv = createCanvas(windowWidth, windowHeight * 0.85);
+  w=windowWidth;
+  h=windowHeight*0.85
+  cnv = createCanvas(w, h);
   textFont('monospace');
 
-  //play animal crossing song for entire game
-  song.play();
-  song.setVolume(1);
+  //button
+  button=createButton("Music on/off");
+  button.mousePressed(playSong);
+  button.class("randomizerButton");
 
   //frames for player sprite
   let playerFrames = playerJSON.frames;
@@ -86,7 +99,7 @@ function setup() {
 
   tree_setup();
 
-  drawPixels();
+  pixelDensity(1);
 }
 
 function gotData(giphy) {
@@ -97,7 +110,7 @@ function gotData(giphy) {
 function draw() {
   switch (state) {
     case 'title':
-    drawPixels();
+      drawWelcomePage();
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
@@ -212,10 +225,11 @@ function level1() {
   textSize(39);
   fill(0);
   noStroke();
+  textFont('monospace');
   textAlign(CENTER);
   text(`points:${points}`, width*0.15, height * 0.15);
 
-  if (points >= 10) {
+  if (points >= 1) {
     state = 'you win';
   }
   pop();

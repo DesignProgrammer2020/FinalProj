@@ -27,6 +27,16 @@ function drawPreload() {
     endangered[i] = loadImage(`pictures/endangered_${i}.jpg`);
   }
 
+  //create 12 butterflies at random locations
+  for (let i = 0; i < 11; i++) {
+    butterflies[i] = new Butterflies(random(0, windowWidth), random(0, windowHeight));
+  }
+
+  //create 6 turtles at random locations
+  for (let i=0; i<=5; i++){
+    turtles[i] = new Turtles (random(0, windowWidth),random(0, windowHeight));
+  }
+
   //upload newYork font
   newYork = loadFont('font/NewYork.ttf');
 }
@@ -49,45 +59,13 @@ function drawSetup() {
   button.mousePressed(buttonPressed);
   button.class("randomizerButton");
 
-  //create 12 butterflies at random locations
-  for (let i = 0; i < 11; i++) {
-    butterflies[i] = new Butterflies(random(0, windowWidth), random(0, windowHeight));
-  }
-
-  //create 6 turtles at random locations
-  for (let i=0; i<=5; i++){
-    turtles[i] = new Turtles (random(0, windowWidth),random(0, windowHeight));
-  }
-
   cnv.mouseClicked(drawMouseClicked);
 
 }
 
 function drawDraw() {
   if (firstTime) {
-    clear();
-    drawPixels();
-
-    for (i = 0; i < butterflies.length; i++) {
-      butterflies[i].display();
-      butterflies[i].move();
-    }
-
-    //stylize the text
-    fill(50, 0, 40);
-    noStroke();
-    textArray = newYork.textToPoints('Repopulate endangered animals!', width * 0.15, height * 0.4, 78, {
-      sampleFactor: 0.3
-    });
-
-    for (let i = 0; i < textArray.length; i++) {
-      ellipse(textArray[i].x, textArray[i].y, 2, 2);
-    }
-
-    fill(0);
-    noStroke();
-    textSize(24);
-    text("Drag to trace. Hit 's' to save. Hit 'c' to redraw.", 0.15 * width, 0.6 * height);
+    drawWelcomePage();
   }
 
   if (animating == true && endangered.length > 0) {
@@ -131,6 +109,32 @@ function drawDraw() {
       ellipse(textArray[i].x, textArray[i].y, 2, 2);
     }
   }
+}
+
+function drawWelcomePage(){
+  clear();
+  drawPixels();
+
+  for (i = 0; i < butterflies.length; i++) {
+    butterflies[i].display();
+    butterflies[i].move();
+  }
+
+  //stylize the text
+  fill(50, 0, 40);
+  noStroke();
+  textArray = newYork.textToPoints('Repopulate endangered animals!', width * 0.15, height * 0.4, 78, {
+    sampleFactor: 0.3
+  });
+
+  for (let i = 0; i < textArray.length; i++) {
+    ellipse(textArray[i].x, textArray[i].y, 2, 2);
+  }
+
+  fill(0);
+  noStroke();
+  textSize(24);
+  text("Drag to trace. Hit 's' to save. Hit 'c' to redraw.", 0.15 * width, 0.6 * height);
 }
 
 function randomizer() {   //randomize preloaded images
